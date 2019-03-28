@@ -10,12 +10,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -25,11 +19,16 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
-
+import com.mrtan.tablayout.R;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -251,30 +250,27 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     /** 创建并添加tab */
     private void addTab(final int position, String title, View tabView) {
-        TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
+        TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
         if (tv_tab_title != null) {
             if (title != null) tv_tab_title.setText(title);
         }
 
-        tabView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = mTabsContainer.indexOfChild(v);
-                if (position != -1) {
-                    if (mViewPager.getCurrentItem() != position) {
-                        if (mSnapOnTabClick) {
-                            mViewPager.setCurrentItem(position, false);
-                        } else {
-                            mViewPager.setCurrentItem(position);
-                        }
-
-                        if (mListener != null) {
-                            mListener.onTabSelect(position);
-                        }
+        tabView.setOnClickListener(v -> {
+            int position1 = mTabsContainer.indexOfChild(v);
+            if (position1 != -1) {
+                if (mViewPager.getCurrentItem() != position1) {
+                    if (mSnapOnTabClick) {
+                        mViewPager.setCurrentItem(position1, false);
                     } else {
-                        if (mListener != null) {
-                            mListener.onTabReselect(position);
-                        }
+                        mViewPager.setCurrentItem(position1);
+                    }
+
+                    if (mListener != null) {
+                        mListener.onTabSelect(position1);
+                    }
+                } else {
+                    if (mListener != null) {
+                        mListener.onTabReselect(position1);
                     }
                 }
             }
@@ -385,7 +381,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
         //for mIndicatorWidthEqualTitle
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
-            TextView tab_title = (TextView) currentTabView.findViewById(R.id.tv_tab_title);
+            TextView tab_title = currentTabView.findViewById(R.id.tv_tab_title);
             mTextPaint.setTextSize(mTextsize);
             float textWidth = mTextPaint.measureText(tab_title.getText().toString());
             margin = (right - left - textWidth) / 2;
@@ -848,7 +844,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     class InnerPagerAdapter extends FragmentPagerAdapter {
-        private ArrayList<Fragment> fragments = new ArrayList<>();
+        private ArrayList<Fragment> fragments;
         private String[] titles;
 
         public InnerPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragments, String[] titles) {

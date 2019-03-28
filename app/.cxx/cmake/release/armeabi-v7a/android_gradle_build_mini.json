@@ -1,0 +1,17 @@
+{
+  "buildFiles": [
+    "/server/project/FlycoTabLayout/app/build/cipher.so/cmake/CMakeLists.txt",
+    "/server/project/FlycoTabLayout/app/build/cipher.so/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/server/reponsitory/SDK/cmake/3.6.4111459/bin/cmake --build /server/project/FlycoTabLayout/app/.cxx/cmake/release/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "cipher-lib-Release-armeabi-v7a": {
+      "artifactName": "cipher-lib",
+      "buildCommand": "/server/reponsitory/SDK/cmake/3.6.4111459/bin/cmake --build /server/project/FlycoTabLayout/app/.cxx/cmake/release/armeabi-v7a --target cipher-lib",
+      "abi": "armeabi-v7a",
+      "output": "/server/project/FlycoTabLayout/app/build/intermediates/cmake/release/obj/armeabi-v7a/libcipher-lib.so"
+    }
+  }
+}

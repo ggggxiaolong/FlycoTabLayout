@@ -3,22 +3,20 @@ package com.flyco.tablayoutsamples.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
-import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.entity.TabEntity;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
-
+import com.mrtan.tablayoutsamples.R;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -64,21 +62,21 @@ public class CommonTabActivity extends AppCompatActivity {
         mDecorView = getWindow().getDecorView();
         mViewPager = ViewFindUtils.find(mDecorView, R.id.vp_2);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        /** with nothing */
+        /* with nothing */
         mTabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
-        /** with ViewPager */
+        /* with ViewPager */
         mTabLayout_2 = ViewFindUtils.find(mDecorView, R.id.tl_2);
-        /** with Fragments */
+        /* with Fragments */
         mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
-        /** indicator固定宽度 */
+        /* indicator固定宽度 */
         mTabLayout_4 = ViewFindUtils.find(mDecorView, R.id.tl_4);
-        /** indicator固定宽度 */
+        /* indicator固定宽度 */
         mTabLayout_5 = ViewFindUtils.find(mDecorView, R.id.tl_5);
-        /** indicator矩形圆角 */
+        /* indicator矩形圆角 */
         mTabLayout_6 = ViewFindUtils.find(mDecorView, R.id.tl_6);
-        /** indicator三角形 */
+        /* indicator三角形 */
         mTabLayout_7 = ViewFindUtils.find(mDecorView, R.id.tl_7);
-        /** indicator圆角色块 */
+        /* indicator圆角色块 */
         mTabLayout_8 = ViewFindUtils.find(mDecorView, R.id.tl_8);
 
         mTabLayout_1.setTabData(mTabEntities);
@@ -179,7 +177,7 @@ public class CommonTabActivity extends AppCompatActivity {
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+        MyPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 

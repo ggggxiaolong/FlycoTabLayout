@@ -3,20 +3,18 @@ package com.flyco.tablayoutsamples.ui;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
-import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
-
+import com.mrtan.tablayoutsamples.R;
 import java.util.ArrayList;
 
 public class SlidingTabActivity extends AppCompatActivity implements OnTabSelectListener {
@@ -26,7 +24,6 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
             "热门", "iOS", "Android"
             , "前端", "后端", "设计", "工具资源"
     };
-    private MyPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,28 +37,28 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
 
         View decorView = getWindow().getDecorView();
         ViewPager vp = ViewFindUtils.find(decorView, R.id.vp);
-        mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        MyPagerAdapter mAdapter = new MyPagerAdapter(getSupportFragmentManager());
         vp.setAdapter(mAdapter);
 
-        /** 默认 */
+        // 默认
         SlidingTabLayout tabLayout_1 = ViewFindUtils.find(decorView, R.id.tl_1);
-        /**自定义部分属性*/
+        /*自定义部分属性*/
         SlidingTabLayout tabLayout_2 = ViewFindUtils.find(decorView, R.id.tl_2);
-        /** 字体加粗,大写 */
+        /* 字体加粗,大写 */
         SlidingTabLayout tabLayout_3 = ViewFindUtils.find(decorView, R.id.tl_3);
-        /** tab固定宽度 */
+        /* tab固定宽度 */
         SlidingTabLayout tabLayout_4 = ViewFindUtils.find(decorView, R.id.tl_4);
-        /** indicator固定宽度 */
+        /* indicator固定宽度 */
         SlidingTabLayout tabLayout_5 = ViewFindUtils.find(decorView, R.id.tl_5);
-        /** indicator圆 */
+        /* indicator圆 */
         SlidingTabLayout tabLayout_6 = ViewFindUtils.find(decorView, R.id.tl_6);
-        /** indicator矩形圆角 */
+        /* indicator矩形圆角 */
         final SlidingTabLayout tabLayout_7 = ViewFindUtils.find(decorView, R.id.tl_7);
-        /** indicator三角形 */
+        /* indicator三角形 */
         SlidingTabLayout tabLayout_8 = ViewFindUtils.find(decorView, R.id.tl_8);
-        /** indicator圆角色块 */
+        /* indicator圆角色块 */
         SlidingTabLayout tabLayout_9 = ViewFindUtils.find(decorView, R.id.tl_9);
-        /** indicator圆角色块 */
+        /* indicator圆角色块 */
         SlidingTabLayout tabLayout_10 = ViewFindUtils.find(decorView, R.id.tl_10);
 
         tabLayout_1.setViewPager(vp);
@@ -118,7 +115,7 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+        MyPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
